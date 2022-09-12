@@ -1,4 +1,4 @@
-# 22 Summer - Frontend Study(React)
+# 22 Fall - Backend Study(Express)
 
 ## 🗓️ 기간 : 2022.09.01 ~ 11.31
 
