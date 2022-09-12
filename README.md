@@ -9,19 +9,19 @@
 <table  width="100%">
   <tr>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/80405708?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/80405708?v=4"  width="100px;"  alt=""/>
     </td>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/49053676?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/49053676?v=4"  width="100px;"  alt=""/>
     </td>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/101553916?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/101553916?v=4"  width="100px;"  alt=""/>
     </td>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/108321588?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/108321588?v=4"  width="100px;"  alt=""/>
     </td>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/108862575?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/108862575?v=4"  width="100px;"  alt=""/>
     </td>
   </tr>
   <tr>
@@ -145,19 +145,19 @@
 <table  width="100%">
   <tr>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/64758861?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/64758861?v=4"  width="100px;"  alt=""/>
     </td>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/108217858?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/108217858?v=4"  width="100px;"  alt=""/>
     </td>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/80514303?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/80514303?v=4"  width="100px;"  alt=""/>
     </td>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/80374808?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/80374808?v=4"  width="100px;"  alt=""/>
     </td>
     <td  align="center">
-      <img  src="https://avatars.githubusercontent.com/u/67510260?v=4"  width="80px;"  alt=""/>
+      <img  src="https://avatars.githubusercontent.com/u/67510260?v=4"  width="100px;"  alt=""/>
     </td>
   </tr>
   <tr>
