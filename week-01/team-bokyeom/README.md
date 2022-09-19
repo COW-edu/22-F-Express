@@ -233,4 +233,7 @@ ex) 파일에 제대로 입력이 되지 않았다던지
 
 [https://codepathfinder.com/entry/NVM-Nodejs-버전-변경하기](https://codepathfinder.com/entry/NVM-Nodejs-%EB%B2%84%EC%A0%84-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0)
 
+nvm이란 ? node.js의 버전을 관리하는 도구
+왜 사용하나요? 협업을 할 때 , 다양한 프로젝트를 동시에 진행할 때 버전 호환 문제를 겪을 수 있기에
+nvm이 있으면 버전 관리가 쉬워짐
 node version manager.
