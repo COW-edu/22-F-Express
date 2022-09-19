@@ -70,7 +70,7 @@ http.createServer(function(req, res){
 const http = require('http');
 const server = http.createServer((req, res) => {
     console.log(req); //동기함수
- })
+ };
 
 server.listen(3000);
 ```
@@ -101,7 +101,7 @@ process.exit();를 작성해주면,
 
 ---
 
-## 요총 처리 및 응답 전송
+## 요청 처리 및 응답 전송
 
 ```jsx
 const http = require('http');
@@ -303,7 +303,7 @@ server.listen(3000);
 ```
 
 1. routes.js라는 새 파일을 생성한다.
-2. 기존 app.js의 if문과 기본 응답 코드를 잘라내  routes.js에 작성합ㄴ다.
+2. 기존 app.js의 if문과 기본 응답 코드를 잘라내  routes.js에 작성한다.
 3. app.js의 http는 아직 필요하므로 둔다.
 4. url과 method는 필요하지 않으니 지운다.
 5. routes.js의 가장 위에 fs를 추가한다.
