@@ -104,11 +104,21 @@ function rqListener(req, res) {
 
 };
 
-http.createServer(rqListener);익명함수
+http.createServer(rqListener);
 ```
 
-### Event Driven Architecture (EDA) : 서버에 요청이 들어올 때마다 함수 실행
+# Event Driven Architecture (EDA) : 서버에 요청이 들어올 때마다 함수 실행
+- 분산된 시스템 간에 이벤트를 생성, 발행하고 발행된 이벤트를 필요로하는 수신자에게 전송
+   - 받은 수신자가 이벤트를 처리하는 형태
 
+## EDA 구성요소 3개
+### 1. Event generator
+- 시스템 내,외보의 상태 변화를 감지하여 표준화된 형식의 이벤트를 생성
+### 2. Event channel
+- 이벤트를 필요로 하는 시스템까지 발송
+### 3. Event processing engine
+- 수신한 이벤트를 식별, 처리를 함
+   - 이벤트 처리결과로 또다른 이벤트를 발생시킬 수도 있음
 ```jsx
 const http = require('http');
 
@@ -190,6 +200,40 @@ server.listen(3000);
 호스트 다음 붙는 모든 주소
 
 /뒤에 오는 값들인데 이 값들에 따라 역할이 달라진다
+```
+const http = require('http');
+const fs = require('fs');
+
+
+const server = http.createServer((req,res) => {
+  
+  const url = req.url;
+  const method = req.method;
+  if (url ==='/') {
+    res.write('<html>');
+    res.write('<head><title>Enter Message</title></head>');
+    res.write('<body><form action="/message" method="POST"><input type="text" name="message">send</form></body>');
+    res.write('</html>');
+    return res.end();
+  }
+  if (url === '/message' && method === 'POST') {
+    fs.writeFileSync('message.txt', 'DUMMY');
+    res.statusCode = 302;
+    res.setHeader('Location', '/');
+    return res.end();
+  }
+	res.setHeader('Content-Type', 'text/html');
+	res.write('<html>');
+	res.write('<head><title>My First Page</title></head>');
+	res.write('<body><h1>Hello from my node.js server!</h1></body>');
+	res.write('</html>');
+  res.end();
+});
+
+server.listen(3000);
+```
+- 처음 서버 상태가 /였다면 if문이 성립되고 보내면 /message상태가 된다
+   - 즉 역할이 변한 상
 
 ### 응답하기
 
