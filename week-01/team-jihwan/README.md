@@ -33,11 +33,9 @@
     - requestListener를 인수로 갖는다.
     - requestListener는  request와 response 두개의 인수를 받는다.  즉, 요청과 응답을 받음.
 - listen : node.js가 스크립트를 바로 종료하지 않고 계속 실행되면서 듣도록 한다.  port, hostname, backlog, listeningListener 총 4개의 인수를 받는다 .
-    - port
+    - port : 네트워크 상에서 특정 PC를 나타내는 IP 주소와 그 주소에 진입할 수 있는 정해진 통로
     - hostname : 기본적으로 localhost를 사용한다.
         - [localhost](http://localhost) : 내 컴퓨터에 할당된 ip주소.
-    - backlog
-    - listeningListener
 
 ## Node.js & Core Modules
 
@@ -47,6 +45,7 @@
     - http :서버를 출시하거나 요청을 보내는 작업 / 여러 서버간에 소통가능
         - Hyper Text Transfer Protocol : 요청과 응답의 통신 규약
     - https : 서버생성, http 요청 및 응답 작업 / 모든 전송 데이터가 암호화되는 SSL 서버를 출시하기에 용이
+        - SSL: 보안소켓계층(Secure Sockets Layer, SSL), 브라우저와 서버 사이의 암호화된 연결을 수립하는 데 사용됩니다.
         - Hyper Text Transfer Protocol Secure : 보안성이 강화된 http
     - fs : FileSystem의 약자, 파일 처리에 관련된 모듈
     - os : 운영체제 확인, 서버의 아키텍쳐를 구분, 서버의 지역 ip를 확인한다.
@@ -221,3 +220,5 @@ npm uninstall 패키지명
 2. 런타임 에러(Runtime Error): 프로그램을 실행할 때 발생하는 에러
 3. 논리적 오류(Logical Error): 오류 메세지가 뜨지 않고 가장 해결하기 어려움 
     1. 중단점을 찍어서 데이터를 확인
+
+
