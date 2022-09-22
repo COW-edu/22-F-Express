@@ -29,7 +29,8 @@ Node.js는 JavaScript를 컴퓨터 환경에서 실행할 수 있도록 하고, 
             - 클라이언트-서버 구조: 클라이언트의 요청이 있을 때 서버가 응답하는 **단방향 통신**
             - 서버는 클라이언트에 요청을 하지 않으며, 클라이언트의 요청에 대한 응답만을 한다.
             
-            ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/605ede2a-257a-483d-ac0b-fc35ac26b41f/Untitled.png)
+            ![image](https://user-images.githubusercontent.com/102955516/191176528-fc49d548-27b1-4cd9-b744-29e2b209735f.png)
+
             
             - 클라이언트의 요청에 대한 서버의 응답에는 요청 처리 결과에 따라 응답 코드가 다르게 온다. 따라서 응답 코드 별로 처리 로직을 만들어 서버의 상황에 대한 대응이 가능해진다.
         - Stateless
@@ -138,7 +139,8 @@ Node.js는 JavaScript를 컴퓨터 환경에서 실행할 수 있도록 하고, 
 
 - node.js Program Lifecycle
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a0c11a5b-6c66-46e1-a05f-58aa60832286/Untitled.png)
+![image](https://user-images.githubusercontent.com/102955516/191176640-39bd015d-e729-435d-9fd3-e8816938c3df.png)
+
 
 1. 이벤트 발생 시 이벤트 루프에 등록된 콜백함수들이 실행됨
 2. 무거운 작업들(ex. 파일 시스템 작업)은 Node.js가 자동으로 시작하고  관리하는 워커풀이 처리함
