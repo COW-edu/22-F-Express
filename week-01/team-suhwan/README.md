@@ -183,8 +183,8 @@ server.listen(3000);
 const fs = require('fs');
 */ -> ES5 방식
 
-import http = 'http';
-import fs = 'fs'; 
+import http from 'http';
+import fs from 'fs';  
 ->ES6 방식
 
 const server = http.createServer((req,res)=>{ //요청을 실행하는 server객체
@@ -225,8 +225,8 @@ server.listen(3000); //server가 실행 직후 꺼지지 않고 계속 실행되
 - 입력받은 메세지를 파일에 저장
 
 ```jsx
-import http = 'http';
-import fs = 'fs'; 
+import http from 'http';
+import fs from 'fs'; 
 
 const server = http.createServer((req,res)=>{
     const url = req.url;
