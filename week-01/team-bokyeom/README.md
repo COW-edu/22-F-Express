@@ -258,5 +258,6 @@ ex) 파일에 제대로 입력이 되지 않았다던지
 nvm이란 ? node.js의 버전을 관리하는 도구
 왜 사용하나요? 협업을 할 때 , 다양한 프로젝트를 동시에 진행할 때 버전 호환 문제를 겪을 수 있기에
 nvm이 있으면 버전 관리가 쉬워짐
-<img width="716" alt="image" src="https://user-images.githubusercontent.com/81469686/191873505-f3d8437b-1cb2-4d18-a4cb-af1831e35442.png">
+
+![alt text](./nvm_.png)
 node version manager.
