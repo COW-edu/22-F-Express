@@ -139,7 +139,7 @@ app.use('/product',(req,res,next)=>{
     - 제3자 패키지 (bodyParser)
         
         ```jsx
-        app.use(bodyParser.urlencoded({extended: false}));
+        app.use(express.urlencoded({extended: false}));
         //미들웨어를 등록해 줌
         //extended -> 비표준 대상 분석 가능 유무를 나타냄
         
@@ -206,7 +206,7 @@ app.use('/product',(req,res,next)=>{
     - 모든 메서드 호출을 연계할 수 있음
 
 ```jsx
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false}));
 
 app.use(adminRoutes);
 app.use(shopRoutes);
