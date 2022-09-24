@@ -12,15 +12,13 @@ Web이 작동할 때, 클라이언트는 request를 보내고 서버는 response
 
 HTTP에 사용되는 메서드 중 GET 메소드는 서버에게 리소스를 달라는 요청 데이터를 받기만 하는 메소드이고, POST 메소드는 서버에 입력 데이터를 전송하며 요청 엔티티 본문에 데이터를 넣어 서버에 전송하는 메서드이다.
 
-  
+
 
 ```
 const fs = require('fs');
-
 const requestHandler = (req, res) => {
   const url = req.url;
   const method = req.method;
-
   if (url === '/') {
     res.write('<html>');
     res.write('<head><title>Enter Message</title><head>');
@@ -53,7 +51,6 @@ const requestHandler = (req, res) => {
   res.write('</html>');
   res.end();
 }
-
 module.exports = requestHandler; 
 // exports.handler = requestHandler; 로도 사용 가능
 ```
