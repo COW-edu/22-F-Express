@@ -195,6 +195,8 @@ server.listen(3000); //3000은 포트번호
 ```
 
 -주요 포트번호
+
+프로토콜       포트번호             설명
 TCPMUX          1       TCP port service Multiplexr
 ECHO            7       echo
 DAYTIME         13      daytime
