@@ -20,7 +20,6 @@
     ```jsx
     import http from 'http';
     const http = http();
-    //require 키워드를 사용해서 다른 파일의 경로나 자바스크립트을 불러 올 수 있다.
     // 함수생성
     function rqListener(req,res) {
     }
@@ -150,7 +149,7 @@
 - 들어오는 요청은 데이터 스트림에 보내진다.
     - 스트림 : 순차적인 데이터, 처음부터 모든 데이터를 한번에 담는 대신 차례대로 소량의 데이터를 처리해 나가는 처리방식.
     
-    ```r
+    ```
     ’‘’JavaScript req.on(’data’,‘실행될 함수’) ’’’
     ```
     
