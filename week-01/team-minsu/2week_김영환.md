@@ -16,6 +16,8 @@
 
 더 나은 Node.js 코드를 작성하게 도와주고, 비즈니스 처리에 도움을 주는 Framework.
 
+ Node.js는 Chrome의 V8엔진을 이용하여 javascript로 브라우저가 아니라 서버를 구축하고, 서버에서 JavaScript가 작동되도록 해주는 런타임 환경(플랫폼)이라고 했다. Express는 이런 Nodejs의 원칙과 방법을 이용하여 웹애플리케이션을 만들기 위한 프레임워크이다.
+
 # Middleware
 
 ---
@@ -56,7 +58,7 @@ path를 인수로 넣었을 때는 접두어만 사용해도 작동이 된다. �
 
 next()를 사용해야 다음 미들웨어로 넘어간다.
 
-![캡처.PNG](week-02%20b4c0fbc074a04c368cbf8455e9d160e0/%25EC%25BA%25A1%25EC%25B2%2598.png)
+![캡처](https://user-images.githubusercontent.com/108862575/192126232-f68dc5af-4661-4a9a-9f75-3569c1180fa5.PNG)
 
 # res.send()
 
