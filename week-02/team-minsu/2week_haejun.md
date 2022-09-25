@@ -226,14 +226,40 @@ res.json(testjson)
 
 - 요청의 경로를 재지정
 
+### res.write()
+
+- 기본 모듈인 http만으로 가능한 전송함수
+- 여러번 보낼 수 있다
+- 단 head와 end함수를 직접 지정해야함
+```
+const http = require('http');
+
+http.createServer(onRequest).listen(8080, madeServer);
+
+function madeServer(){
+  console.log("8080 서버를 만듬!");
+}
+
+function onRequest(request, response){
+  console.log("사용자가 들어옴");
+  response.writeHead(200, {'Content-Type': 'text/html'});
+  response.write('<h1>Hello User</h1>');
+  response.end('<h1>Res Done</h1>'); // end를 안쓰면 데이터가 넘어가지 않는다!
+}
+```
+
 ### res.send()
 
 - 다양한 유형의 응답을 전송
+- res.write()와 res.end()의 통합방식 : 한번만 사용 가능 
+
+### res.json()
+
+- 정보를 json형태로 바꿔서 응답을 전송
 
 ### res.sendFile()
 
 - 파일을 옥텟 스트림의 형태로 전송
-- 
 
 # 404 응답처리
 
@@ -307,5 +333,3 @@ app.listen(3000);
 - 다음 예시코드는 루트 경로 “/” 로 라우팅하기 전에 `myLogger`라는 middleware함수를 로드하고 있다
     - 루트 경로에 대한 라우팅 이후에 `myLogger`가 로드되면, 루트 경로의 라우트 핸들러가 요청-응답 주기를 종료하므로 요청은 절대로 `myLogger`에 도달하지 못하며 앱은 “LOGGED”를 인쇄하지 않는다
 - 앱이 요청을 수신할 때마다, 앱은 “LOGGED”라는 메시지를 터미널에 인쇄
-
-### 사용 예시2
