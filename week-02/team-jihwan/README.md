@@ -9,14 +9,14 @@
     - express 없이 라우터를 만들면 요청을 주소별로 따로 처리해야하기 때문에 복잡해진다.
     - passing을 대신 진행 해주기 위해 프로젝트 내부에 쉽게 연결이 가능한 다른 패키지를 쉽게 설치하도록 도와준다.
         - parsing : 일련의 문자열을 컴퓨터가 처리할 수 있게 의미있는 token으로 분해하는 것
+    - 단점은 ? 구조가 잡혀있지 않기 때문에 설계를 잘못하게 될 경우 상황이 복잡해진다. ( + 수작업이 많아진다.) 또한 다른 프레임워크에 비해 메모리를 많이 차지한다. 
 - 설치
     - npm install —save express : 프로덕션 의존성
         - 프로덕션 의존성 때문에 npm install --save dev를 하면 안된다. 개발중에 사용하는 것 뿐아니라 production 에서도 한 부분으로 통합될 것이므로 로컬, 개발, 프로덕션 모두에 설치 되어야 한다.
     
     ```jsx
-    const http = require('http');   // node전용 코어 모듈 
-    
-    const express = require('express'); //패키지
+    import http from 'http';
+    import express from 'express';
     
     const app = express();  // express 앱 생성. 요청 핸들러 역할을 한다. 
     
@@ -29,7 +29,7 @@
 - Express.js 백그라운드 확인
     
     ```jsx
-    const http = require('http');
+    import http from 'http';
     const server = http.createServer(app);
     server.listen(3000);
     //아래 코드는 위의 내용을 한번에 해결가능한 코드이다
@@ -57,19 +57,81 @@
         - next는 express.js를 통해 use로 전달되는 함수이다. next는 인수에 존재하는 또 다른 함수를 수신한다. 수신 내용은 다음 미들웨어로 요청이 이동할 수 있도록 실행되어야 한다.
         - 새로운 미들웨어 함수를 추가할 때(다음 라인에 존재하는 미들웨어로 요청을 이동시키려 할 때는 ) next 함수를 호출해야한다.
         - 응답을 전송하는 것이 아닌 이상 항상 next를 호출해야 하고 응답을 전송하려면 절대 next를 호출해서는 안된다.(이때 요청을 변환하고, 정보를 읽어내고, 액세스하는 라우트에 따라 다른 응답을 전송하기 위해 미들웨어를 잘 설계해야한다.)
+        - next() 함수는 어떻게 다음 미들웨어를 찾아서 실행될까 ? 
+            - next() 함수 내부에 while 순환이 있다. 순환 할 때마다 stack에서 layer를 꺼내고, 이 layer에는 경로와 미들웨어 정보가 포함되어 있다. 그리고 layer와 요청한 path가 일치하는지 확인한다. 일치하면 layer.handle을 실행하고 일치하지 않으면 다음 layer(미들웨어)를 순환한다. 
+            ```jsx
+            function next(err) {
+            ... //      
+            // find next matching layer
+            var layer;
+            var match;
+            var route;
+
+            while (match !== true && idx < stack.length) {
+            layer = stack[idx++];
+            match = matchLayer(layer, path);
+            route = layer.route;
+
+            if (typeof match !== 'boolean') {
+                // hold on to layerError
+                layerError = layerError || match;
+            }
+
+            if (match !== true) {
+                continue;
+            }
+            ... //      
+            }
+            ... //      
+            // this should be done for the layer
+            if (err) {
+                layer.handle_error(err, req, res, next);
+            } else {
+            layer.handle_request(req, res, next);
+                }
+            }
+            ```
         
-        ```jsx
-        const app = express();
-        app.use((req,res,next) => {
-        	console.log('In the middleware');
-        	next(); //next 호출. 아래에 존재하는 middleware로 이동.
-        });  
-        app.use((req,res,next) => {
-        	console.log('In the middleware');
-        });  
-        const server = http.creatServer(app);
-        ```
-        
+        - 다음 미들웨어가 없을 때 next()가 호출된다면 어떻게 될까 ? 이전 미들웨어의 끝났던 시점에서 다시 시작한다. 
+            ```jsx
+            import express from "express";
+
+            const app = express();
+            app.use(express.json());
+
+            // 1번
+            app.use((req, res, next) => {
+            console.log("Calling first middleware");
+            next();
+            console.log("Calling after the next() function");
+            });
+
+            // 2번
+            app.use((req, res, next) => {
+            console.log("Calling second middleware");
+            return next(); // It returns the function block immediately and call next() function so the return next(); and next(); return; are the same
+            console.log("After calling return next()");
+            });
+
+            app.listen(8080);
+            // 실행 결과 아래와 같은 실행결과가 나타난다. 
+            // Calling first middleware
+            // Calling second middleware
+            // Calling after the next() function
+            ```
+    
+            ```jsx
+            const app = express();
+            app.use((req,res,next) => {
+                console.log('In the middleware');
+                next(); //next 호출. 아래에 존재하는 middleware로 이동.
+            });  
+            app.use((req,res,next) => {
+                console.log('In the middleware');
+            });  
+            const server = http.creatServer(app);
+            ```
+    
         ```jsx
         app.use((req, res, next) => {});
         //next는 함수로 인수에 있는 또 다른 함수를 수신하며 다음 미들웨어로 이동하게 함
@@ -89,6 +151,13 @@
         		//res.send("html/text");
         		//미들웨어에서 response를 보내면 다음 미들웨어로 진행하지 못함
         });
+        ```
+        - 에러 처리를 위한 미들웨어에는 4개의 인자가 필요하다. err, req, res, next이다. 4개의 인자를 가지고 있는 함수를 express에서는 error를 handling 하기 위한 미들웨어로 약속되어 있다. 페이지를 찾을 수 없을때 next가 호출되면서 어떤 미들웨어가 등록되어 있는지는 무시되고 제일 끝에 추가한 인자가 4개인 에러 처리 미들웨어로 이동하여 에러데이터가 err 인자로 전달된다.
+    
+        ```jsx
+        app.use((err, req,res,next) => {
+        	res.status(500).send('Something broke!');
+        });  
         ```
         
 - app.use([우리가 찾고자 하는 대상 (path)], 실행해야하는 함수 (callback) )
@@ -161,7 +230,7 @@
 - express는 라우팅을 다른 파일에 위탁하는 편리한 방법을 제공한다. 폴더를 하나 만들고 , 다양한 경로와 http method에 대해 실행할 라우팅 관련 코드를 파일에 담아서 이 폴더 안에 저장한다.
     
     ```jsx
-    const express = require('express'); // express 임포트
+    import express from 'express'; // express 임포트
     const router = express.Router(); // 라우터 생성, 실행하게 될 함수이다. 
     router.get( ... );  //라우터를 사용해 대상 등록. 
     module.exports = router; //라우터 전송
@@ -170,8 +239,8 @@
     - express.Router는 다른 express 앱에 연결되어 있거나 꽂아 넣을 수 있는 express 앱과 같으며 module.exports를 통해 내보낼 수도 있다.
     
     ```jsx
-    const express = require('express');
-    const bodyParser = require('body-parser');
+    import express from 'express';
+    import bodyParser from 'bodyParser';
     
     const app = express();
     
@@ -230,7 +299,7 @@
     - deprecation warning 이란 ? deprecation은 이제 앞으로 라이브러리에서 지원하지 않을 것을 예고하는 말이다.
     
     ```jsx
-    const path = require('path');
+    import path from 'path';
     
     module.exports = path.dirname(require.main.filename);
     //process.mainModule은 현재 deprecated 됐다. →require.main 을 사용
@@ -238,7 +307,7 @@
     
 - Express.static()을 사용해 이러한 파일들(CSS, JS파일)에 대한 정적 서비스도 가능하다.
     - 정적 서비스 : express.Router나 다른 미들웨어 소프트에서 처리되지 않고 파일 시스템으로 직접 포워딩된다는 뜻이다.
-    
+
     ```jsx
     app.use(express.static(‘path.join을 이용해 읽기 액세스를 허용하고자 하는 폴더의 위치를 입력’));
     정적 파일을 서비스 해준다
