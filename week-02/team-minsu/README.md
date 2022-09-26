@@ -234,3 +234,35 @@ app.use(express.static(path.join(__dirname, "public")));
 ```
 
 `express.static`을 정적 파일을 제공하는 미들웨어로 등록해주고 static의 인자로 전달되는 'public' 이라는 디렉터리 밑에 있는 데이터들을 웹브라우저의 요청에 따라 제공해줄 수 있다.
+
+## http status code
+
+웹서비스에서 반환되는 상태코드는 http status code라고 불리며, 대표적인 상태 코드로는 "404 Not Found"가 있습니다
+
+상태 코드는 3자리 숫자로 만들어져 있으며, `첫번째 자리는 1에서 5까지 제공됩니다.`
+
+<br>
+
+## **첫번째 자리가 4와 5인 경우는 정상적인 상황이 아니기 때문에 사이트 관리자가 즉시 알아야 하는 정보입니다.**
+
+<br>
+
+- 1xx(정보) : 요청을 받았으며 프로세스를 계속 진행합니다.
+- 2xx(성공) : 요청을 성공적으로 받았으며 인식했고 수용하였습니다.
+- 3xx(리다이렉션) : 요청 완료를 위해 추가 작업 조치가 필요합니다.
+- 4xx(클라이언트 오류) : 요청의 문법이 잘못되었거나 요청을 처리할 수 없습니다.
+- 5xx(서버 오류) : 서버가 명백히 유효한 요청에 대한 충족을 실패했습니다.
+
+## 대표적인 상태코드 예시
+
+- 200 : OK
+- 201 : Created
+- 301 : Moved Permanently
+- 302 : Found
+- 304 : Not Modified
+- 400 : Bad Request
+- 401 : Unauthorized
+- 403 : Forbidden
+- 404 : Not Found
+- 500 : Internal Server Error
+- 503 : Service Unavailable
