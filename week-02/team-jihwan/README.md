@@ -288,6 +288,21 @@
 
 - sendFile : sendFile을 사용함으로써 사용자에게 파일을 회신할 수 있으며 콘텐츠 유형을 자동으로 응답헤더로 설정한다. (section 3에서 content-type을 text/html로 돌려줬던 과정보다 자동화된것을 알 수  있다. )
     - 파일의 경로는 node.js가 제공하는 코어 모듈 ‘path’를 활용한다.
+    - sendFile 외 응답 메소드는 여러 메소드가 존재한다. 
+    |메소드|설명|
+    |------|---|
+    |res.download()|파일이 다운로드되도록한다.|
+    |res.end()|응답 프로세스를 종료한다.|
+    |res.json()|JSON 응답을 전송한다.|
+    |res.jsonp()|JSONP(다른 도메인으로부터 데이터를 가져오기 위해 사용하는 방법) 지원을 통해 JSON 응답을 전송한다.|
+    |res.redirect()|요청의 경로를 재지정한다.|
+    |res.render()|보기 템플리트를 렌더링한다. 즉, html을 빌드하여 response로 내려주는 메서드이다.|
+    |res.send()|다양한 유형의 응답을 전송한다.|
+    |res.sendFile()|파일을 옥텟 스트림(8비트로 된 배열)의 형태로 전송한다.|
+    |res.sendStatus()|응답 상태 코드를 설정한 후 해당 코드를 문자열로 표현한 내용을 응답 본문으로서 전송한다.|
+     - 이외에도 응답메소드에 대해 알 수 있는 공식 사이트이다.
+      [https://expressjs.com/en/api.html#res](https://expressjs.com/en/api.html#res)
+
 - path.join() : 마지막에 경로를 출력해준다. 여러 부분을 이어 붙여서 경로를 구축한다.
     - __dirname: 절대경로를 프로젝트 폴더로 고정시켜주는 역할을 한다. ( node에서 제공하는 전역변수이다. )
     - 사용 이유는 ? 자동으로 윈도우 시스템과 리눅스 모두에서 작동하는 방식으로 경로를 생성해주기 때문이다.  (윈도우와 리눅스가 가진 운영체제가 달라서 경로 설정하는 방식이 다른데, join은 실행중인 운영체제를 감지해서 자동으로 올바른 경로를 생성한다고 한다. )
@@ -295,9 +310,18 @@
     - 폴더를 생성한 후, 상위 디렉토리로 가는 경로를 구축한다.
     - join대신 dirname을 사용한다.
         - dirname은 경로의 디렉터리 이름을 회신한다.
+        - CommonJS가 아닌 ES6 환경에는 __dirname 변수가 없어서 에러가 발생한다. ES6 환경에서는 __dirname 변수를 만들어서 사용할 수 있다
+        ```jsx
+        import path from 'path';
+        import { fileURLToPath } from 'url';
+        
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = path.dirname(__filename);
+        console.log(__dirname);
+        ```
     - ~~process.mainModule 전역 프로세스 변수를 사용해서 인자로 넘겨준다.~~  deprecated됐다.
     - deprecation warning 이란 ? deprecation은 이제 앞으로 라이브러리에서 지원하지 않을 것을 예고하는 말이다.
-    
+
     ```jsx
     import path from 'path';
     
