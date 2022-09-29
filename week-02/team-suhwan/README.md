@@ -278,9 +278,10 @@ app.use("/admin/add-product", (req, res, next) => {
 ### 헬퍼 함수
 
 ```jsx
-const path = require('path');
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = path.dirname(process.mainModule.filename);
+const __dirname = dirname(fileURLToPath(import.meta.url));
 ```
 
 __dirname으로 절대 경로를 고정하고 시작하지 않고 다른 파일에 위 코드처럼 미리 경로를 지정하여 원래 코드에 임포트하여 사용할 수 있게 함.
