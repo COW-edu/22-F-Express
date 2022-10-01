@@ -20,7 +20,7 @@
 - 클라이언트 사이드 렌더링(CSR): 서버로부터 제공받은 데이터를 클라이언트에서 렌더링 ~> HTML 화면을 동적으로 만듬
     - 사용자와 많은 상호 작용이 필요할 때 사용
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f7523f1d-54ec-4465-9a99-834f4b8bf6d8/Untitled.png)
+![Untitled](https://t1.daumcdn.net/cfile/tistory/2527A54557AD0BAE2D)
 
 ### 사용할 수 있는 템플릿 엔진
 
