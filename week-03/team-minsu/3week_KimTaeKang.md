@@ -96,15 +96,16 @@ EJS 구조와 HTML 구조 비교
 
 ## `EJS`
 
-```ejs
+```html
 <!DOCTYPE html>
 <html>
-    <head>
-        <title><%=title%></title>
-        <!--EJS에서는 변수를 사용할 시 <%= %> 로 감싼다.-->
-        <link rel="stylesheet", href="/stylesheets/style.css">
-    </head>
-<html>
+  <head>
+    <title><%=title%></title>
+    <!--EJS에서는 변수를 사용할 시 <%= %> 로 감싼다.-->
+    <link rel="stylesheet" , href="/stylesheets/style.css" />
+  </head>
+  <html></html>
+</html>
 ```
 
 ## `HTML`
@@ -124,3 +125,31 @@ EJS 구조와 HTML 구조 비교
 장점 : HTML 문법을 그대로 사용하되, 추가로 Javascript문법을 사용할 수 있다.
 
 단점 : HTML 문법과 별 차이가 없어서 간단하지는 않다.
+
+## Handlebars
+
+## `Handlebars`
+
+```handlebars
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <!--Handlebars에서는 변수를 사용할 시 {{ }} 로 감싼다.-->
+        <link rel="stylesheet", href="/stylesheets/style.css">
+    </head>
+```
+
+## `HTML`
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>title</title>
+    <link rel="stylehsheet" , href="/stylesheets/style.css" />
+  </head>
+</html>
+```
+
+`대체로 EJS와 비슷한 구조를 가지고 있다.`
