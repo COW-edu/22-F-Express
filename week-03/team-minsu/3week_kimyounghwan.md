@@ -145,11 +145,12 @@ html(lang="en")
 
 ### Each 문
 
-pug에서 지원하는 두 가지 반복문 중 하나다. 간단히 말하면 Python for문이랑 굉장히 흡사하다.
+pug에서 지원하는 두 가지 반복문(while, each) 중 하나다. 둘의 차이를 간단히 말하면 each(for)-in은 list의 인덱스랑 value를 값이 얻을 수 있지만, while문은 불가능하다.
+(참고로 PUG는 JS에 있는 for문도 지원해준다.)
 
 ```html
  ul
-  each val in [1, 2, 3, 4, 5]
+  each val in [1, 2, 3, 4, 5] //for val in [ 1, 2, 3, 4, 5]도 가능하다.
     li= val
 ```
 
@@ -157,11 +158,21 @@ pug에서 지원하는 두 가지 반복문 중 하나다. 간단히 말하면 P
 
 ```html
 ul
-  each val, index in ['zero', 'one', 'two']
+  each val, index in ['zero', 'one', 'two'] //for val in [ 1, 2, 3, 4, 5]도 가능하다.
     li= index + ': ' + val
 ```
 
 또한 index도 같이 얻을 수 있다.
+
+```html
+var values = [];
+ul
+  each val in values
+    li= val
+  else
+    li There are no values
+```
+else도 사용할 수 있다.
 
 # Handlebars
 
@@ -239,4 +250,3 @@ app.set('view engine', 'ejs');
 
 예를 들어 header 부분이 마음에 안 들어 바꾸고 싶다면, 모든 템플릿들의 header부분을 바꿔줘야 할 것이다.  이런 비효율적인 행위를 하기 싫어서 사용하는 것이다.
 
-#
