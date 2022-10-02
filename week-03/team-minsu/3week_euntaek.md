@@ -40,6 +40,14 @@ Add Product 페이지에서 Book을 추가하고 재로딩하면 배열안 book�
 
 ⇒사용자들은 탬블릿 서버에서 일어나는 일을 볼 수 없고 동적으로 상황에 따라 생성된 html을 볼 수 있다.
 
+=>템플릿 엔진이란, 지정된 템플릿 양식과 데이터가 합쳐져 HTML문서를 출력하는 소프트웨어를 이야기한다. 쉽게 이야기해서, 웹사이트 화면을 어떤 형태로 만들지 도와주는 양식이라고 생각하면 된다.
+
+### 서버 템플릿 엔진, 클라이언트 템플릿 엔진 
+=> 여러 양식들중 JSP, Freemarker, 리액트, 뷰와 같은 View 파일이 있다.
+모두 지정되어있는 템플릿과 데이터를 이용하여 HTML을 생성하는 템플릿 엔진이지만, 전자는 서버 템플릿 엔진, 후자는 클라이언트 템플릿 엔진이다.
+
+JSP를 비롯한 서버 템플릿 엔진은 서버에서 구동된다.
+
 ### 대표적인 템플릿 엔진
 
 1.EJS
@@ -71,6 +79,41 @@ p #{name}
 Pug는 다른 구문을 사용하여 실제 html을 사용하지 않고 최소 버전으로 대체하며 #{}구문등을 동적 컨텐츠와 함께 출력한다.
 
 ⇒if문들과 목록들도 포함할 수 있고 반복문도 포함될 수 있다.
+
+### 퍼그의 조건문과 반복문
+1.조건문
+우리가 알고있는 if문과 case문을 활용한다.
+```jsx
+if flag
+  p TRUE입니다.
+else
+  p FALSE입니다.
+case animals
+  when 'dog'
+    p dog
+  when 'cat'
+    p cat
+  when 'bird'
+    p bird
+  when 'mouse'
+    p mouse
+  default
+    p So...What is this?
+```
+
+2.반복문
+each 혹은 for 키워드로 반복문을 사용할 수 있다.
+```jsx
+<ul>
+  <li>dog</li>
+  <li>cat</li>
+  <li>bird</li>
+  <li>mouse</li>
+</ul>
+ul
+  each animals in ['dog', 'cat', 'bird', 'mouse']
+    li animals
+```
 
 3.Handlebars
 
