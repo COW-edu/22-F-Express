@@ -10,7 +10,7 @@
     - 미들웨어 기능들 간 분할됨 . 일부 논리가 분리되어 다른 미들웨어 기능으로 이동한다.
     - Routes : 어떤 경로에 따른 http 메소드에 따라 어떤 controller 코드를 실행할지 정의한다.
     
-    ![Untitled](section%207%201e4a53e12cf44f4899dfaa2122b449ff/Untitled.png)
+    ![다운로드](https://user-images.githubusercontent.com/108217858/194718989-526db517-438b-490f-bd41-452216067e3f.png)
     
 - 코드를 구조화하는 특정 패턴을 따라야 한다.
 
