@@ -36,7 +36,7 @@
 
 ### MVC 모델 1
 
-![image]https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FI1UUx%2FbtqEZ0IhZ6O%2FqzvwssYAAkEltNqYd3Kpik%2Fimg.png
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FI1UUx%2FbtqEZ0IhZ6O%2FqzvwssYAAkEltNqYd3Kpik%2Fimg.png)
 
 - 웹 개발을 할 때 JSP가 View와 Controller의 역할을 모두 한다.
     - **JSP(Java Server Pages)**: HTML 코드에 java 코드를 넣어 동적인 웹페이지를 생성하는 웹어플리케이션 도구
@@ -45,7 +45,7 @@
 
 ### MVC 모델 2
 
-![image]https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbgbhsb%2FbtqE0BOnWqs%2FGhoRjVi90P1dYSBjRHSo91%2Fimg.png
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbgbhsb%2FbtqE0BOnWqs%2FGhoRjVi90P1dYSBjRHSo91%2Fimg.png)
 
 - 모델 1에서 유지보수가 힘들다는 단점을 보완하기 위해 나온 모델
 - JSP가 View의 역할을 하고 Servlet이 Controller 역할을 한다.
