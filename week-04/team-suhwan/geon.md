@@ -2,8 +2,6 @@
 
 : 모델, 뷰, 컨트롤러 세 가지 역할을 나누어 개발하는 프로그래밍 방식
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/61519efa-57ea-4f23-aafa-97076e9beb21/Untitled.png)
-
 - Model: 객체나 데이터를 나타내는 코드의 한 부분
 
 데이터 저장이나 파일로부터 데이터를 주고받는 등의 작업을 할 수 있음
@@ -139,7 +137,7 @@ controllers파일에 fetchAll 함수를 호출해 모든 제품을 가져와 pro
     
 
 질문 - 404 page ReferenceError
-ReferenceError: C:\Users\sec\OneDrive\바탕 화면\nodejs\views\404.ejs:5
+<!-- ReferenceError: C:\Users\sec\OneDrive\바탕 화면\nodejs\views\404.ejs:5
     3|
     4| <body>
  >> 5|     <%- include('includes/navigation.ejs') %>
@@ -155,4 +153,4 @@ C:\Users\sec\OneDrive\바탕 화면\nodejs\views\includes\navigation.ejs:4
     6|       </ul>
     7|   </nav>
 
-path is not defined
+path is not defined -->
