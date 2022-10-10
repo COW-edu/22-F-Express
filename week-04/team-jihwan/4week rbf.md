@@ -286,7 +286,7 @@ static fetchAll(cb) {
 }
 }
 ```
-# MVC 패턴 외에 다른 패턴 - MVP
+# MVC 패턴 외에 다른 패턴 
 
 ## MVP : Model View Presenter
 
@@ -300,4 +300,13 @@ static fetchAll(cb) {
     - View와 Model의 역할이 분명해진다.
 - 단점 : view와 presenter 사이의 의존성이 높다는 단점이 생긴다. 앱이 복잡해질수록 view와 presenter 사이의 의존성이 강해진다.
 
-![Untitled](MVP%20e1b20ec1dced42c68782989c96f47a4e/Untitled.png)
+![Untitled](https://ifh.cc/g/QYtpjX.png)
+
+## MVVM
+- MVVM 패턴은 모바일 개발에서 흔히 사용되는 디자인패턴인데, 웹 프론트엔드도 복잡해지면서
+이 패턴을 차용하는 프로젝트가 생겼다.
+- MVVM은 Model + View + View Model 를 합친 용어이다.
+    - View와 Model은 MVC에서의 역할과 같다
+    - View Model은 View를 표현하기 위해 만든 View를 위한 Model이다.
+    - View에 들어온 input들을 View Model이 Model과 View 사이에서 데이터를 가공하고 주고받는다.
+- container 내부에서 함수를 선언하고 조합하는 코드가 View Model로 빠져 좀 더 효율적으로 코드를 관리할 수 있으며, 추후 메모이제이션 등을 적용할 때 편리하다
