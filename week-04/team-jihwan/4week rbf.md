@@ -11,7 +11,7 @@
 ## Model
 
 - 어플리케이션의 정보, 데이터를 나타낸다. 데이터베이스, 상수, 초기화 값, 변수 등을 뜻 한다.
-- 데이털르 저장하고, 불러오고, 최신으로 유지하는 등의 관리를 수행한다.
+- 데이터를 저장하고, 불러오고, 최신으로 유지하는 등의 관리를 수행한다.
 - 메모리, 파일, 데이터 베이스 등 어디서 데이터를 관리하더라도 항상 모델이 데이터를 담당하는 컴포넌트를 의미한다.
 - 모델의 규칙
     1. 사용자가 편집하길 원하는 모든 데이터를 가지고 있어야 한다
@@ -67,7 +67,7 @@
 
 ![mvc](https://ifh.cc/g/YG6Omf.png)
 
-## Controller
+## Controller 만드는 법
 
 - 컨트롤러를 작업할 파일을 생성한 뒤, 해당 파일에서 작업을 진행한다.
 - 컨트롤러 함수에 링크를 추가해야한다.
@@ -76,7 +76,7 @@
 ```jsx
 //controllers 폴더 안의 products.js 파일
 //routes 폴더의 admin.js 파일에서 긁어온 middleware 함수
-exports.getAddProduct = (req, res, next) => {
+exports const getAddProduct = (req, res, next) => {
 	res.render('add-product', {
 	pageTitle: 'Add Product',
 	path: '/admin/add-product',
@@ -90,7 +90,7 @@ exports.getAddProduct = (req, res, next) => {
 // 컨트롤러를 작업한 파일을 가져온 뒤 사용할 컨트롤러명을 입력해준다.
 // express routes에 이 함수를 저장하라고 알려주는 역할을 한다.
 // 괄호가 쓰이지 않고 사용이 될 경우 실행이 되지 않는다. 참조만 전달
-exports.postAddProduct = (req, res, next) => {
+exports const postAddProduct = (req, res, next) => {
 	products.push({title: req.body.title});
 	res.redirect('/');
 };
@@ -99,7 +99,7 @@ exports.postAddProduct = (req, res, next) => {
 const Product = require('../models/product');
 
 //shop.js 파일에서도 동일하다.
-exports.getProducts = (req, res, next) => {
+exports const getProducts = (req, res, next) => {
 	//const products = adminData.products;
 	//product 배열을 이동해 두어서 더이상 다른 곳에서 받아올 필요 없으므로 삭제한다.
 
@@ -122,18 +122,17 @@ const producsController = require('../controllers/products');
 router.get('/add-product', productsController.getAddProduct)
 router.get('/add-product', productsController.postAddProduct)
 
-//admin.js 파일에 더이상 product 배열이 없기 때문에 아래 부분도 삭제한다. 
-exports.routes = router;
-exports.products = products;
 //대신 shop.js 파일에서처럼 라우터 내보내기를 해야 한다.
-module.exports = router;
+export default {
+    router;
+}
 ```
 
 ```jsx
 //app.js 파일. admin Data를 adminRoutes로 모두 수정한다.
-const adminData = require('./routes/admin/);
+const adminData = require('./routes/admin/');
 //수정
-const adminRoutes = require('./routes/admin/);
+const adminRoutes = require('./routes/admin/');
 ```
 
 ```jsx
@@ -143,21 +142,16 @@ const producsController = require('../controllers/products');
 router.get('/', productsController.getAddProduct)
 ```
 
-## Models
+## Models 만드는 법
 
 - 단일 entity를 만드는 것을 목표로 한다. (제품의 모습, 제품이 보유한 영역, 이미지나 제목의 보유 여부 등이 코어 데이터이다. )
 
 ```jsx
-//model 폴더 생성. product.js 파일 만든다.
-moudle.exports = function Product() {}
-//대신에
-module.exports = class Prdoduct {}
-//도 가능하다.
 
 const product = [];
 
-module.exports = class Prdoduct {
-	constructor(title) {
+export default {
+    constructor(title) {
 		this.title = title;
 	}
 
@@ -176,7 +170,7 @@ module.exports = class Prdoduct {
 //products 배열 제거한다.
 const Product = require('../models/product');
 
-exports.postAddProduct = (req, res, next) => {
+exports const postAddProduct = (req, res, next) => {
 	//products.push({title: req.body.title});
 	//model 사용하기 때문에 제거한다.
 	const product = new Product(req.body.title);
@@ -184,7 +178,7 @@ exports.postAddProduct = (req, res, next) => {
 	res.redirect('/');
 };
 
-exports.getProducts = (req, res, next) => {
+exports const getProducts = (req, res, next) => {
 	//const products = adminData.products;
 	//product 배열을 이동해 두어서 더이상 다른 곳에서 받아올 필요 없으므로 삭제한다.
 	const products = Product.fetchAll();
@@ -223,7 +217,7 @@ fs.writeFile(p,JSON.stringfy(products));
     
     ```jsx
     static fetchAll() {
-     fs.readFile(p, (err, fileContent)=> {
+     fs.readFile(p, (err, fileContent) => {
     	if (err){
        return [];
        }
@@ -245,7 +239,7 @@ static fetchAll(cb) {
   'data',
   products.json
 );
-  fs.readFile(p, (err, fileContent)=> {
+  fs.readFile(p, (err, fileContent) => {
   if (err){
    cb([]);
   }
@@ -292,3 +286,18 @@ static fetchAll(cb) {
 }
 }
 ```
+# MVC 패턴 외에 다른 패턴 - MVP
+
+## MVP : Model View Presenter
+
+- Model , View는 MVC 모델과 같다. MVC에서 Controller가 하는 역할을 Presernter가 한다고 생각하면 된다.
+    - MVP패턴은 MVC 패턴의 단점이었던 view와 model의 의존성을 해결했다. (presenter을 통해서만 데이터를 전달받기 때문이다.)
+- Presenter : Model과 View 사이의 매개체이다. Model과 View를 매개한다는 점에서 Controller와 유사하지만, View에 직접 연결되는 대신 인터페이스를 통해 상호작용한다는 차이가 있다.
+    - 인터페이스를 통해 상호작용하므로 MVC가 가진 모듈화/유연성 문제 해결이 가능하다.
+    - View에게 표시할 내용 (Data)만 전달하며 어떻게 보여줄 지는 View가 담당한다.
+- 장점
+    - View와 Model의 의존성이 없다. (둘의 결합도를 낮추면, 새로운 기능 추가 및 변경을 할 때 관련된 부분만 코드를 수정하면 되기 때문에 확장성이 개선된다. )
+    - View와 Model의 역할이 분명해진다.
+- 단점 : view와 presenter 사이의 의존성이 높다는 단점이 생긴다. 앱이 복잡해질수록 view와 presenter 사이의 의존성이 강해진다.
+
+![Untitled](MVP%20e1b20ec1dced42c68782989c96f47a4e/Untitled.png)
