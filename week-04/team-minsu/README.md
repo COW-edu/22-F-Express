@@ -107,6 +107,11 @@
 >        - 사용자의 행위 없이도 서버에서 변경된 정보를 실시간적으로 업데이트를 할 수 있게 합니다.
 >        - 웹 페이지의 일부만을 업데이트하여 사용자에게 보여주므로 빠른 응답이 가능합니다.
 >        - (참고자료 https://mvcp.tistory.com/entry/Real-time-Apps-2-Polling)
+>    - Pooling
+>        - 데이터 베이스 등에서 사용
+>        - Object Pooling : 사용할 객체를 미리 만들어 놓은 후 필요한 경우 가져다 사용하는 방식
+>        - Pooling Pattern : 리소스를 초기화하여 Pool에 미리 만들어놓고 필요할때마다 사용
+>           - Resource Pool에 미리 리소스들을 생성 및 관리 해놓는다. 사용후에는 release를 통해 Resource Pool에 반환 
 #### 1-4. 특징
 
 - Controller는 여러개의 View를 선택할 수 있는 1:n 구조입니다.
