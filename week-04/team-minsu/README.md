@@ -94,19 +94,19 @@
 - Controller가 View를 선택하기에 하나의 Controller가 여러개의 View를 선택하여 Model을 나타낼 수 있습니다.
   - 여기서 Controller는 View를 선택만하고 업데이트 해주지 않아 Model을 이용하여 업데이트 해야합니다.
 > - Controller event 없이 View 업데이트 하는 방법
-    - Controller나 View가 View를 업데이트 하기 위해 주기적으로 이벤트를 발생시킴 
-      - 예) Timer object
-    - Model 변경의 근본적인 원인을 확인하거나 trigger하고 controller을 호출
-      - 예) Database trigger
-    - 이벤트가 발생할 때 모델이 이벤트를 발생시키고 Controller 및/또는 View가 이 이벤트에 바인딩 되도록 함
-      - 예) Model.onTimeUpdate
+>   - Controller나 View가 View를 업데이트 하기 위해 주기적으로 이벤트를 발생시킴 
+>       - 예) Timer object
+>   - Model 변경의 근본적인 원인을 확인하거나 trigger하고 controller을 호출
+>       - 예) Database trigger
+>   - 이벤트가 발생할 때 모델이 이벤트를 발생시키고 Controller 및/또는 View가 이 이벤트에 바인딩 되도록 함
+>       - 예) Model.onTimeUpdate
 > - View가 Model을 이용하여 직접 업데이트 하는 방법
 > - Model에서 View에게 Notify 하여 업데이트 하는 방법
 > - View가 Polling으로 주기적으로 Model의 변경을 감지하여 업데이트 하는 방법.
-    - Polling
-        - 사용자의 행위 없이도 서버에서 변경된 정보를 실시간적으로 업데이트를 할 수 있게 합니다.
-        - 웹 페이지의 일부만을 업데이트하여 사용자에게 보여주므로 빠른 응답이 가능합니다.
-        - (참고자료 https://mvcp.tistory.com/entry/Real-time-Apps-2-Polling)
+>    - Polling
+>        - 사용자의 행위 없이도 서버에서 변경된 정보를 실시간적으로 업데이트를 할 수 있게 합니다.
+>        - 웹 페이지의 일부만을 업데이트하여 사용자에게 보여주므로 빠른 응답이 가능합니다.
+>        - (참고자료 https://mvcp.tistory.com/entry/Real-time-Apps-2-Polling)
 #### 1-4. 특징
 
 - Controller는 여러개의 View를 선택할 수 있는 1:n 구조입니다.
