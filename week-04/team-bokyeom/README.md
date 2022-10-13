@@ -31,7 +31,8 @@ Model - View - Controller로 애플리케이션을 세 가지 계층으로 구�
 
 - View가 Model을 직접 이용하여 업데이트
 - Model에서 View를 Notify하여 업데이트
-- View가 Pollingㅎ여 Model의 변화를 감지해서 업데이트
+- View가 Polling하여 Model의 변화를 감지해서 업데이트
+- Polling : 충돌 회피 또는 동기화 처리 등을 목적으로 다른 프로그램의 상태를 주기적으로 검사하여 일정한 조건을 만족할 때 송수신 등의 자료처리를 하는 방식
 
 위 흐름을 보면 알 수 있듯이 View를 업데이트 하기 위해서는 M-V사이 의존성이 존재해서 애플리케이션이 커질수록 복잡도가 높아질 수 있다.
 
@@ -132,7 +133,7 @@ MVVM은 Model-View-ViewModel로 애플리케이션을 세가지 계층으로 구
 → 이때 Presentation Logic은 실제 눈에 보이는 GUI 화면을 구성하는 코드를 뜻함
 
 1. ViewModel은 View를 참조하지 않기에 독립적이다 (1:1 관계이다)
-2. 따라서 View는 자신이 이용할 VIewModel을 선택해 바인딩하여 업데이트를 받게 된다
+2. 따라서 View는 자신이 이용할 ViewModel을 선택해 바인딩하여 업데이트를 받게 된다
 3. Model이 변경되면 해당하는 ViewModel을 이용하는 View가 자동으로 업데이트
 4. ViewModel은 View를 나타내주기 위한 Model이자 View의 Presentation Logic을 처리한다
 
