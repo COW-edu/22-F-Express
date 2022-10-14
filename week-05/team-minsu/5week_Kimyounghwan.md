@@ -60,9 +60,15 @@ router.get('/:name', function(req, res, next) {
 
 Static routing보다 훨씬 깔끔해 보인다. 
 
-## 쿼리 파라미터
+### Query parameter & Path variable
+
+## Query parameter
+
+경로 뒤에 입력 데이터를 함께 제공하는 식으로 사용한다.
 
 URL 마지막에 ?를 덧붙인 매개변수이다.
+
+? 뒷 부분을 **Query string**이라고 한다.
 
 &를 통해 여러 개를 가질 수 있다.
 
@@ -73,3 +79,35 @@ req.query.{query string 키 이름}를 통해 값을 추출할 수 있다.
 //HTTP GET /search?q=김영환 으로 요청이 들어왔을때
 const q = req.query.q //로 하면 "김영환"이라는 value를 얻을 수 있다.
 ```
+
+## Path variable
+
+이름에서도 알 수 있듯이 경로를 변수로 사용한다.
+
+예를 들어 게시판이 존재하고 그 안에 각각의 게시물을 볼 수 있는 경우를 생각하자.
+게시물을 볼라면 각각의 id를 서버에 넘겨줘야 한다. 
+URL 예를 들면 아래와 같다.
+```jsx
+/post/6
+```
+
+##Path variable VS Query parameter
+
+가령 예를 들어 존재하지 않는 resource의 id가 들어온다면,
+Path variable은 404 ERROR를 발생시킬 것이다.
+Query parameter는 해당하는 들어온 resource의 해당하는 데이터가 없는 경우, 따로 에러 핸들링을 해야한다.
+
+**즉, resource의 식별이 필요한 상황이라면 Path variable이 더 적절하다.**
+
+이번엔 정렬이나 필터링을 해야되는 상황을 가정해보자.
+만약 게시판에서 명지대와 관련된 글만 필터링 하는 예시는 다음과 같다.
+```jsx
+post/명지대
+post?category=명지대
+```
+이 때 이 게시판에 명지대와 관련된 게시물이 없을 경우
+**Path variable은 404를 일으키고, Query parameter는 빈 리스트를 반환할 것이다.**
+
+필터링 시 404에러가 발생하는 것은 부적절할 수 있으므로  **정렬이나 필터링 시에는 Query parameter가 적절하다.**
+
+
