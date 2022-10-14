@@ -91,7 +91,7 @@ URL 예를 들면 아래와 같다.
 /post/6
 ```
 
-##Path variable VS Query parameter
+## Path variable VS Query parameter
 
 가령 예를 들어 존재하지 않는 resource의 id가 들어온다면,
 Path variable은 404 ERROR를 발생시킬 것이다.
