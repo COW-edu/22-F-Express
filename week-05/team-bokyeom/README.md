@@ -15,7 +15,7 @@
     
     서버에서 접속시 매번 가공해서 제공하는 웹사이트로 데이터베이스에서 값을 읽어 접속할때마다 최신 정보를 주는것
     
-    [단순히 최신 정보를 주는 것은 정적 웹 사이트도 가능하다 그때마다 리소스를 업데이트 해주면 되니까. 하지만 동적이다라는 말에 초점을 맞춰서 생각해보자. 동적 웹 사이트는 데이터베이스에 존재하는 데잍에 의존하여 화면이 변화된다. 그러면 클라이언트가 데이터 베이스의 데이터를 생성, 수정, 삭제가 가능하고 그 점이 동적 웹의 가장 큰 장점이다.]
+    [단순히 최신 정보를 주는 것은 정적 웹 사이트도 가능하다 그때마다 리소스를 업데이트 해주면 되니까. 하지만 동적이다라는 말에 초점을 맞춰서 생각해보자. 동적 웹 사이트는 데이터베이스에 존재하는 데이터에 의존하여 화면이 변화된다. 그러면 클라이언트가 데이터 베이스의 데이터를 생성, 수정, 삭제가 가능하고 그 점이 동적 웹의 가장 큰 장점이다.]
     
     ex) sns
     
@@ -23,7 +23,8 @@
     
     [https://velog.io/@pluviabc1/정적-웹과-동적-웹은-무엇인가요-얄팍한-코딩-사전](https://velog.io/@pluviabc1/%EC%A0%95%EC%A0%81-%EC%9B%B9%EA%B3%BC-%EB%8F%99%EC%A0%81-%EC%9B%B9%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94-%EC%96%84%ED%8C%8D%ED%95%9C-%EC%BD%94%EB%94%A9-%EC%82%AC%EC%A0%84)
     
-    ## 118. 경로에 제품 ID 추가
+    ## 118. 경로에 제품 ID 추가 
+    118과 같은 번호는 udmey 강의 번호입니다.
     
     1. Details이라는 버튼 만들기
     2. ID 추가
@@ -74,8 +75,8 @@
     ## 123. 장바구니 모델 추가하기
     
     ```jsx
-    const fs = require('fs');
-    const path = require('path'); //경로를 잘 구축할 수 있도록 경로 도우미 불러오기
+    const fs = require('fs'); //es6로 작성하려면, import fs from 'fs'
+    const path = require('path'); //경로를 잘 구축할 수 있도록 경로 도우미 불러오기 //es6로 작성하려면, import path from 'path'
     
     const p = path.join(
       path.dirname(process.mainModule.filename),
@@ -128,7 +129,7 @@
     
     예를 들어 id를 조회할 때 사용
     
-    ```java
+    ```jsx
     router.get("/products/:productId", shopController.getProduct);
     ```
     
@@ -154,7 +155,7 @@
     
     명명되 경로 “매개변수”에 매핑된 속성을 포함하는 객체이다. 예를 들어 /student/:id 경로가 있는 경우 "id" 속성을 req.params.id로 사용할 수 있다. 이 객체의 기본값은 {}이다.
     
-    ```java
+    ```jsx
     router.get('/:id/:name',(req,res,next)=>{
     console.log(req.params);
     });
@@ -172,7 +173,7 @@
     
     예를 들어 [www.example.com/post/1/jun?title=hello](http://www.example.com/post/1/jun?title=hello)! 이면, title=hello! 부분을 객체로 매개변수의 값을 가져온다
     
-    ```java
+    ```jsx
     // 요청온 url : www.example.com/public/100/jun?title=hello!
     app.use(express.urlencoded({ extended: false })); // uri 방식 폼 요청 들어오면 파싱
     
@@ -190,7 +191,7 @@
     
     예시 2)
     
-    ```java
+    ```jsx
     // from(Front)
     
     fetch('http://localhost:5000/rests?filter[type]=hotel&page=1&limit=15'
