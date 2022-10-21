@@ -207,3 +207,19 @@ router.get('/artists', function (req, res) {
 });
 ```
 --> /artists/name=cow
+
+# Query String vs Request Body
+
+- query string
+  - 같은 리소스, 다른 동작
+  - 일반적인 것, 디버깅 가능한 것
+  - 인수가 디버깅하는 동안 보고 싶을 때
+  - 코드를 개발하는 동안 예를 들어 curl로 수동으로 호출할 수 있기를 원할 때
+  - 여러 웹 서비스에서 인수가 공통적인 경우
+  - 이미 application/octet-stream과 같은 다른 콘텐츠 유형을 보내는 경우
+- request body
+  - 계층구조를 가질 때 혹은 리스트
+  - 일반적인 것, 디버깅 가능한 것 외 나머지
+  - 인수에 플랫 키: 값 구조가 없는 경우
+  - 값이 사람이 읽을 수 없는 경우 (예: 직렬화된 이진 데이터)
+  - 매우 많은 수의 인수가 있을 때
