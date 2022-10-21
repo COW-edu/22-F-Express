@@ -136,6 +136,10 @@ cb(JSON.parse(fileContent));
 
 URL 마지막에 ?를 덧붙인 매개변수이다.
 
+## Query paramter로 배열 받기
+1. &을 여러번 사용하여 배열을 받는다
+2. nestjs 내장 기능을 이용하여 자동으로 query key를 배열로 만들어 준다
+3. ?cars[]=Saab&cars[]=Audi (Best way- PHP reads this into an array)
 
 &를 통해 여러 개를 가질 수 있다.
 
