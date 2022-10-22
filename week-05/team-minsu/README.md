@@ -109,7 +109,7 @@ export default getProduct = (req, res, next) => {
 Models 영역에서 전달받은 id값과 일치하는 데이터를 찾아주는 findById 메서드는 일단 데이터가 저장된 json파일로부터 전체 데이터를 array형태로 읽어온 후, 자바스크립트의 find() 메서드를 이용해서 전달받은 id에 해당하는 데이터를 찾찾아, 인자로 전달 받은 콜백함수를 실행한다.
 
 ```js
-static findById(id,cb){
+static getProductById(id,cb){
 getProductfromFile(products=>{
 const product = products.find(p => p.id === id);
 // p.id === id 가 true이면 현재 보고있는 p (products 중에 하나) 를 return 하여 product 변수에 저장
