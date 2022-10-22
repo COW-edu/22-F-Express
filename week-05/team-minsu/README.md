@@ -95,7 +95,7 @@ Controller 영역에서는 Models영역의 findById 즉, 해당 id 값과 일치
 ```js
 export default getProduct = (req, res, next) => {
   const prodId = req.params.productId; //파라미터 추출
-  Product.findById(prodId, (product) => {
+  Product.getProductById(prodId, (product) => {
     res.render("shop/product-detail", {
       //동적 페이지 render
       productInfo: product,
